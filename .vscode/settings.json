@@ -1,0 +1,24 @@
+{
+    "terminal.integrated.profiles.windows": {
+
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "VC x64": {
+            "path": "cmd",
+            "args": ["/k","F:/周思诚学习资料存档/VS/VC/Auxiliary/Build/vcvarsall.bat","x86_amd64"]
+        }
+    }
+}
