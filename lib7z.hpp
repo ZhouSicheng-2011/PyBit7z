@@ -11,3 +11,14 @@ using namespace std;
 #include <bitarchiveitem.hpp>
 #include <bitarchiveiteminfo.hpp>
 using namespace bit7z;
+
+//Archive Item Info
+typedef struct Lib7zArchiveItemInfo
+{
+    string path;
+    uint32_t CRC32;
+    uint64_t csize;
+    uint64_t rsize;
+    //...
+
+};
