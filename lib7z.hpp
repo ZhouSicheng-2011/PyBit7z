@@ -13,12 +13,14 @@ using namespace std;
 using namespace bit7z;
 
 //Archive Item Info
-typedef struct Lib7zArchiveItemInfo
-{
-    string path;
-    uint32_t CRC32;
-    uint64_t csize;
-    uint64_t rsize;
-    //...
+typedef BitArchiveItemInfo Lib7zArchiveItemInfo;
+//7z DLL(suppose these DLLs are all in the system path variable)
+const Bit7zLibrary& dll_7z = Bit7zLibrary{"7z.dll"};
+const Bit7zLibrary& dll_7za = Bit7zLibrary{"7za.dll"};
 
+//Lib7z main class
+class Lib7zArchive{
+    public:
+        Lib7zArchive(const string& filename, const Bit7zLibrary& dll, const BitInOutFormat& format, const string& password="");
+        Lib7zArchive(const string& filename, const Bit7zLibrary& dll, const BitInFormat& format, const string& password="");
 };
