@@ -18,7 +18,7 @@
         },
         "VC x64": {
             "path": "cmd",
-            "args": ["/k","F:/周思诚学习资料存档/VS/VC/Auxiliary/Build/vcvarsall.bat","x86_amd64"]
+            "args": ["/k","E:/周思诚学习资料存档/VS/VC/Auxiliary/Build/vcvarsall.bat","x86_amd64"]
         }
     }
 }
