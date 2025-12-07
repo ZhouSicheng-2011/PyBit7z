@@ -19,6 +19,20 @@
         "VC x64": {
             "path": "cmd",
             "args": ["/k","E:/周思诚学习资料存档/VS/VC/Auxiliary/Build/vcvarsall.bat","x86_amd64"]
+        },
+        "MSYS2 UCRT": {
+            "path": "cmd.exe",
+            "args": [
+                "/c",
+                "D:\\AppData\\MSYS2\\msys2_shell.cmd -defterm -here -no-start -ucrt64"
+            ]
+        },
+        "MSYS2 MINGW64": {
+            "path": "cmd.exe",
+            "args": [
+                "/c",
+                "D:\\AppData\\MSYS2\\msys2_shell.cmd -defterm -here -no-start -mingw64"
+            ]
         }
     }
 }
