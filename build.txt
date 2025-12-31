@@ -1,0 +1,3 @@
+cmake -S /usr/bit7z-4.0.9 -B /usr/build/bit7z -DBIT7Z_CUSTOM_7ZIP_PATH=/usr/7z-source -DBIT7Z_REGEX_MATCHING=ON -DBIT7Z_AUTO_FORMAT=ON -G "Ninja" --install-prefix=/usr/bit7z
+
+cmake -S D:\software\bit7z-4.0.9 -B D:\software\build -DBIT7Z_CUSTOM_7ZIP_PATH=D:\AppData\MSYS2\usr\7z-source -DBIT7Z_REGEX_MATCHING=ON -DBIT7Z_AUTO_FORMAT=ON -G "Visual Studio 17 2022" --install-prefix=D:\software\bit7z
