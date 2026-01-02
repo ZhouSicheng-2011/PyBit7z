@@ -1,1 +1,6 @@
+#Object files
+.obj
+.o
 
+#Build directorys
+build/

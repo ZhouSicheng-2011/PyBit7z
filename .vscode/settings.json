@@ -18,7 +18,7 @@
         },
         "VC x64": {
             "path": "cmd",
-            "args": ["/k","E:/周思诚学习资料存档/VS/VC/Auxiliary/Build/vcvarsall.bat","x86_amd64"]
+            "args": ["/k","D:/AppData/VS2022/VC/Auxiliary/Build/vcvarsall.bat","x86_amd64"]
         },
         "UCRT64": {
             "path": "cmd.exe",
@@ -33,6 +33,13 @@
                 "/c",
                 "D:\\AppData\\MSYS2\\msys2_shell.cmd -defterm -here -no-start -mingw64"
             ]
+        },
+        "Winlibs GCC": {
+            "path": "C:/Program Files/Git/git-cmd.exe",
+            "env":{
+                "PATH":"E:/14.2.0posix-19.1.1-12.0.0-msvcrt-r2/mingw64/bin"
+            }
+            
         }
     }
 }
