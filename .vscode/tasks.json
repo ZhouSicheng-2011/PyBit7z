@@ -1,0 +1,37 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build test.cpp",
+            "type": "shell",
+            "command": "\"D:\\AppData\\VS2022\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe\"",
+            "args": [
+                "/std:c++11",
+                "/EHsc",
+                "/nologo",
+                "/MD",
+                "/I",
+                "${workspaceFolder}\\bit7z-msvc-2022\\include",
+                "/I",
+                "${workspaceFolder}\\include",
+                "/I",
+                "${workspaceFolder}\\lib7z",
+                "/Fe:${workspaceFolder}\\lib7z\\test.exe",
+                "${workspaceFolder}\\lib7z\\test.cpp",
+                "${workspaceFolder}\\lib7z\\lib7z.cpp",
+                "${workspaceFolder}\\include\\pyos.cpp",
+                "${workspaceFolder}\\bit7z-msvc-2022\\lib\\x64\\Release\\bit7z.lib",
+                "ole32.lib",
+                "oleaut32.lib",
+                "user32.lib",
+                "advapi32.lib"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$msCompile"],
+            "detail": "使用MSVC编译器编译test.cpp程序"
+        }
+    ]
+}

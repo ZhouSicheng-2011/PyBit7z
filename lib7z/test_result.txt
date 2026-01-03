@@ -1,0 +1,8 @@
+2026-1-3
+C++:___
+Python:
+发生异常: UnsupportedCompressionMethodError
+(b'\x03\x03\x01\x1b', 'BCJ2 filter is not supported by py7zr. Please consider to contribute to XZ/liblzma project and help Python core team implementing it. Or please use another tool to extract it.')
+  File "E:\QMDownload\QLDownload\PyBit7z\lib7z\test.py", line 12, in <module>
+    fp.extractall("./test")
+py7zr.exceptions.UnsupportedCompressionMethodError: (b'\x03\x03\x01\x1b', 'BCJ2 filter is not supported by py7zr. Please consider to contribute to XZ/liblzma project and help Python core team implementing it. Or please use another tool to extract it.')

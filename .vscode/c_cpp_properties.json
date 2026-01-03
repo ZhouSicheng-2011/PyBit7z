@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/bit7z-msvc-2022/include/bit7z",
-                "${workspaceFolder}/include"
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/include/pyos"
             ],
             "defines": [
                 "_DEBUG",
@@ -15,7 +16,7 @@
             "windowsSdkVersion": "10.0.22621.0",
             "compilerPath": "D:\\AppData\\VS2022\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
             "cStandard": "c17",
-            "cppStandard": "c++17",
+            "cppStandard": "c++11",
             "intelliSenseMode": "windows-msvc-x64"
         }
     ],
