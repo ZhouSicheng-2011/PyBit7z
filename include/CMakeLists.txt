@@ -16,6 +16,12 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# 生成导出头文件
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/pyos_export.h.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/pyos_export.h"
+)
+
 # 输出目录组织
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -46,6 +52,8 @@ if(MSVC)
     if(BUILD_SHARED_LIBS)
         # 自动导出所有符号（简化方式）
         set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+        # 添加导出宏定义
+        add_definitions(-DPYOS_EXPORTS)
     endif()
 else()
     # GCC/Clang设置
@@ -54,6 +62,7 @@ else()
     # 位置无关代码（支持动态库）
     if(BUILD_SHARED_LIBS)
         add_compile_options(-fPIC)
+        add_definitions(-DPYOS_EXPORTS)
     endif()
     
     # 优化设置
@@ -63,6 +72,12 @@ else()
         add_compile_options(-O0 -g -DDEBUG)
     endif()
 endif()
+
+# 设置源文件
+set(SOURCES pyos.cpp)
+
+# 添加包含目录
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 # 添加库目标（根据BUILD_SHARED_LIBS决定构建静态库还是动态库）
 add_library(pyos ${SOURCES})
@@ -94,9 +109,19 @@ install(FILES pyos.hpp
     DESTINATION include
 )
 
+# 安装导出头文件
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/pyos_export.h
+    DESTINATION include
+)
+
 # 构建示例程序
 if(BUILD_EXAMPLES AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/example.cpp")
     add_executable(pyos_example example.cpp)
+    
+    # 为示例程序添加导出头文件目录
+    target_include_directories(pyos_example PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+    
+    # 链接库
     target_link_libraries(pyos_example pyos)
     
     # 安装示例程序

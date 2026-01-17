@@ -1,4 +1,12 @@
 // example.cpp - 使用pyos库的示例
+// 在包含pyos.hpp之前先包含导出头文件
+#ifdef _WIN32
+    #ifdef _DEBUG
+        #define PYOS_DEBUG
+    #endif
+#endif
+
+#include "pyos_export.h"
 #include "pyos.hpp"
 #include <iostream>
 
