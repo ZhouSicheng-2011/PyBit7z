@@ -40,16 +40,6 @@ namespace os {
 // 命名空间别名，方便使用
 namespace fs = std::filesystem;
 
-// ===================== 常量定义 =====================
-
-#ifdef _WIN32
-    const char sep = '\\';
-    const char pathsep = ';';
-#else
-    const char sep = '/';
-    const char pathsep = ':';
-#endif
-
 // ===================== os.path 命名空间实现 =====================
 
 namespace path {
@@ -288,7 +278,6 @@ int getmode(const std::string& path) {
 
 bool chmod(const std::string& path, int mode) {
 #ifdef _WIN32
-    // Windows下简化处理
     return _chmod(path.c_str(), mode) == 0;
 #else
     return ::chmod(path.c_str(), mode) == 0;
@@ -330,14 +319,6 @@ std::vector<std::string> walk(const std::string& root) {
         // 忽略错误
     }
     return result;
-}
-
-std::string linesep() {
-#ifdef _WIN32
-    return "\r\n";
-#else
-    return "\n";
-#endif
 }
 
 // ===================== 实用工具函数实现 =====================
