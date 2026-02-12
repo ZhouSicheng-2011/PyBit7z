@@ -1,6 +1,4 @@
 // example.cpp - 使用pyos库的示例
-// 注意：用户代码不需要定义PYOS_EXPORTS，我们只是使用库
-
 #include "pyos.hpp"
 #include <iostream>
 
@@ -51,22 +49,11 @@ int main() {
             // 读取文件
             std::string content = os::read_file(test_file);
             std::cout << "文件内容: " << content << std::endl;
-            
-            // 获取修改时间
-            time_t mtime = os::path::getmtime(test_file);
-            if (mtime > 0) {
-                std::cout << "文件修改时间: " << std::ctime(&mtime);
-            }
-            
-            // 测试walk函数
-            std::cout << "\n测试目录遍历:" << std::endl;
-            auto files = os::walk(".");
-            std::cout << "当前目录下找到 " << files.size() << " 个文件" << std::endl;
         }
         
         // 清理测试目录
         os::removedirs(test_dir);
-        std::cout << "\n清理测试目录" << std::endl;
+        std::cout << "清理测试目录" << std::endl;
     }
     
     // 3. 环境变量操作
@@ -82,23 +69,22 @@ int main() {
     std::string temp_dir = os::gettempdir();
     std::cout << "临时目录: " << temp_dir << std::endl;
     
-    std::cout << "路径分隔符: " << os::sep << std::endl;
-    std::cout << "路径列表分隔符: " << os::pathsep << std::endl;
+    // 注意：现在sep和pathsep是函数，需要加括号调用
+    std::cout << "路径分隔符: " << os::sep() << std::endl;
+    std::cout << "路径列表分隔符: " << os::pathsep() << std::endl;
     std::cout << "行结束符: " << os::linesep();
     
-    // 5. 其他功能测试
-    std::cout << "\n5. 其他功能测试:" << std::endl;
+    // 5. 其他测试
+    std::cout << "\n5. 其他测试:" << std::endl;
     
-    std::string random_str = os::urandom(16);
-    std::cout << "随机字符串: " << random_str << std::endl;
+    // 测试linesep函数
+    std::cout << "测试linesep函数，"
+              << "Windows应该返回\\r\\n，"
+              << "其他平台返回\\n" << std::endl;
     
-    // 测试路径扩展
-    std::string expanded = os::expanduser("~/Documents");
-    std::cout << "expanduser('~/Documents'): " << expanded << std::endl;
-    
-    // 测试相对路径
-    std::string rel_path = os::path::relpath(temp_dir, ".");
-    std::cout << "临时目录的相对路径: " << rel_path << std::endl;
+    // 使用sep和pathsep构建路径
+    std::cout << "使用函数构建路径示例: "
+              << "dir1" << os::sep() << "dir2" << os::sep() << "file.txt" << std::endl;
     
     return 0;
 }

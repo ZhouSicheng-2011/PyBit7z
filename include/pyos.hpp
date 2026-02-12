@@ -15,16 +15,8 @@ namespace os {
 // ===================== os.path 命名空间 =====================
 namespace path {
 
-/**
- * 拼接路径组件（类似os.path.join）
- * @param parts 路径组件列表
- * @return 拼接后的路径
- */
 std::string join(const std::vector<std::string>& parts);
 
-/**
- * 拼接路径组件（可变参数版本）
- */
 template<typename... Args>
 inline std::string join(const Args&... args) {
     std::vector<std::string> parts = {args...};
