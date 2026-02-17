@@ -13,28 +13,10 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.22621.0",
-            "compilerPath": "D:\\AppData\\VS2022\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
-            "cStandard": "c17",
-            "cppStandard": "c++11",
-            "intelliSenseMode": "windows-msvc-x64"
-        },
-        {
-            "name": "Win32-Winlibs-GCC-14.2.0",
-            "includePath": [
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/bit7z-winlibs-14.2.0",
-                "${workspaceFolder}/include"
-            ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "windowsSdkVersion": "10.0.22621.0",
+            "compilerPath": "E:\\MSVC\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "windows-gcc-x64",
-            "compilerPath": "E:\\14.2.0posix-19.1.1-12.0.0-msvcrt-r2\\mingw64\\bin\\gcc.exe"
+            "intelliSenseMode": "windows-msvc-x64"
         }
     ],
     "version": 4

@@ -4,5 +4,9 @@
 
 #Build directorys
 build/
+dist/
 CMakeFiles/
 CMakeCache.txt
+
+#VS Code Configurations
+#.vscode/

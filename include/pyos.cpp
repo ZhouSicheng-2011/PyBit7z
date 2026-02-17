@@ -17,7 +17,7 @@
     #include <windows.h>
     #include <direct.h>
     #include <io.h>
-    #define getcwd _getcwd
+    // #define getcwd _getcwd
     #define chdir _chdir
     #define stat _stat
     #ifndef S_ISDIR
@@ -109,14 +109,11 @@ std::pair<std::string, std::string> splitext_pair(const std::string& p) {
 }
 
 time_t getmtime(const std::string& p) {
-    try {
-        auto ftime = fs::last_write_time(fs::path(p));
-        auto sctp = std::chrono::time_point_cast<std::chrono::system_clock::duration>(
-            ftime - fs::file_time_type::clock::now() + std::chrono::system_clock::now());
-        return std::chrono::system_clock::to_time_t(sctp);
-    } catch (...) {
-        return 0;
+    struct stat fileStat;
+    if (stat(p.c_str(), &fileStat) == 0) {
+        return fileStat.st_mtime;
     }
+    return 0;
 }
 
 std::string relpath(const std::string& path, const std::string& start) {
@@ -137,7 +134,13 @@ bool isabs(const std::string& p) {
 
 std::string getcwd() {
     char buffer[4096];
+#ifdef _WIN32
+    // Windows 使用 _getcwd
+    if (::_getcwd(buffer, sizeof(buffer)) != nullptr) {
+#else
+    // 其他平台使用 getcwd
     if (::getcwd(buffer, sizeof(buffer)) != nullptr) {
+#endif
         return std::string(buffer);
     }
     return "";
