@@ -1,8 +1,6 @@
 /*
-This is the main wrapper of bit7z for Python 3.8 or greater (pybind11-3.0.2)
+This is the main wrapper of bit7z for Python 3.8 or higher versions (pybind11-3.0.2)
 */
-#ifndef PYBIT7Z_HPP
-#define PYBIT7Z_HPP
 
 /*
 If you want to use this program on Windows 7, please add "/DWIN7_COMPAT" opition in cl compiler command
@@ -13,9 +11,8 @@ If you want to use this program on Windows 7, please add "/DWIN7_COMPAT" opition
 #endif
 
 #include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
+#include <pybind11/stl_bind.h>
 #include <pybind11/chrono.h>
 #include <pybind11/gil.h>
 namespace py = pybind11;
 
-#endif
