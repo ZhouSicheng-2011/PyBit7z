@@ -1,28 +1,34 @@
 {
     "configurations": [
         {
-            "name": "MSVC-2022",
-            "includePath": [
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/bit7z-msvc-2022/include/**",
-                "${workspaceFolder}/include",
-                "${workspaceFolder}/env314/Lib/site-packages/pybind11/include",
-                "E:/Python314/include/*",
-                "${workspaceFolder}/src",
-                "${workspaceFolder}/bit7z-msvc-2022/include/bit7z"
-            ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "windowsSdkVersion": "10.0.22621.0",
-            "compilerPath": "E:\\MSVC\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
-            "cStandard": "c17",
-            "cppStandard": "c++11",
-            "intelliSenseMode": "windows-msvc-x64"
-        },
-        {"name": "Linux-GCC",
+      "name": "MSVC-2022",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/bit7z-msvc-2022/include/**",
+        "${workspaceFolder}/include",
+        "${workspaceFolder}/env314/Lib/site-packages/pybind11/include",
+        "E:/Python314/include/*",
+        "${workspaceFolder}/src",
+        "${workspaceFolder}/bit7z-msvc-2022/include/bit7z",
+        // ===== 新增系统头文件路径（根据你的 %INCLUDE% 输出）=====
+        "E:/MSVC/VC/Tools/MSVC/14.44.35207/include",
+        "C:/Windows Kits/10/Include/10.0.20348.0/ucrt",
+        "C:/Windows Kits/10/Include/10.0.20348.0/shared",
+        "C:/Windows Kits/10/Include/10.0.20348.0/um",
+        "C:/Windows Kits/10/Include/10.0.20348.0/winrt"
+        // 下面两个不是必须（iostream 用不到），但加上也无妨：
+        // "E:/MSVC/VC/Tools/MSVC/14.44.35207/ATLMFC/include",
+        // "E:/MSVC/VC/Auxiliary/VS/include"
+      ],
+      "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
+      "windowsSdkVersion": "10.0.20348.0",   // ← 更新 SDK 版本
+      "compilerPath": "E:/MSVC/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
+      "cStandard": "c11",
+      "cppStandard": "c++11",
+      "intelliSenseMode": "windows-msvc-x64"
+    },
+        {
+            "name": "Linux-GCC",
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/bit7z-linux-gcc/include/**",
@@ -43,7 +49,6 @@
             "cppStandard": "c++11",
             "intelliSenseMode": "linux-gcc-x64"
         }
-        
     ],
     "version": 4
 }
