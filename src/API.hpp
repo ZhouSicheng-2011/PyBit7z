@@ -36,6 +36,19 @@ License: This project is under the Apache-2.0 Lincense, see LICENSE for more det
 #include <pybind11/stl.h>
 #include <pybind11/gil.h>
 namespace py = pybind11;
+//Special Config to disable using native Python list to save time which is spent on converting
+#include <pybind11/pybind11.h>
+PYBIND11_MAKE_OPAQUE(std::map<std::string, std::string>)
+PYBIND11_MAKE_OPAQUE(std::vector<std::string>)
+// Function: use py::list to construct std::vector<std::string>
+std::vector<std::string> list_to_string_vec(const py::list& lst) {
+    return lst.cast<std::vector<std::string>>();
+}
+
+// Function: use py::dict to construct std::map<std::string, std::string>
+std::map<std::string, std::string> dict_to_string_map(const py::dict& d) {
+    return d.cast<std::map<std::string, std::string>>();
+}
 
 //General bit7z headers
 #include <bit7z.hpp>

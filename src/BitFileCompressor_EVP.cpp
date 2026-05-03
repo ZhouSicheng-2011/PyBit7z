@@ -7,10 +7,6 @@ License: This project is under the Apache-2.0 Lincense, see LICENSE for more det
 
 //bit7z header
 #include <bitfilecompressor.hpp>
-//Special Config
-#include <pybind11/pybind11.h>
-PYBIND11_MAKE_OPAQUE(std::map<std::string, std::string>)
-PYBIND11_MAKE_OPAQUE(std::vector<std::string>)
 
 //My headers
 #include <API.hpp>
@@ -18,5 +14,8 @@ PYBIND11_MAKE_OPAQUE(std::vector<std::string>)
 //BitFileCompressor interface
 void init_bitcompressor(py::module& mod){
     py::class_<bit7z::BitFileCompressor>(mod, "BitFileCompressor")
-        .def(py::init<const bit7z::Bit7zLibrary&, const bit7z::BitInOutFormat&>());
+        .def(py::init<const bit7z::Bit7zLibrary&, const bit7z::BitInOutFormat&>())
+        .def("clear_password", &bit7z::BitFileCompressor::clearPassword, "Clear the current password used by the handler. Calling clearPassword() will disable the encryption/decryption of archives.")
+        .def("compress", py::overload_cast<const std::map<std::string, std::string>&, const std::string&>(&bit7z::BitFileCompressor::compress))
+        ;
 }

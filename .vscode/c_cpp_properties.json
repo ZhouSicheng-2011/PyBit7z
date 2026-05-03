@@ -23,8 +23,8 @@
       "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
       "windowsSdkVersion": "10.0.20348.0",   // ← 更新 SDK 版本
       "compilerPath": "E:/MSVC/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
-      "cStandard": "c11",
-      "cppStandard": "c++11",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
       "intelliSenseMode": "windows-msvc-x64"
     },
         {
@@ -46,7 +46,7 @@
             ],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c17",
-            "cppStandard": "c++11",
+            "cppStandard": "c++17",
             "intelliSenseMode": "linux-gcc-x64"
         }
     ],
