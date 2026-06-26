@@ -48,5 +48,6 @@
             "args": [],
             "icon": "terminal-cmd"
         }
-    }
+    },
+    "cmake.ignoreCMakeListsMissing": true
 }

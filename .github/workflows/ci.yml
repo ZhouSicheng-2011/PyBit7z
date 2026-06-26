@@ -1,0 +1,40 @@
+name: Build bit7z-python
+
+on:
+  push:
+    tags:
+      - "v*" 
+
+jobs:
+  build_wheels_linux:
+    name: Build wheels on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download bit7z x64 pre-built package
+        env:
+          BIT7Z_VER: "4.0.12"
+        run: |
+          wget https://github.com/ZhouSicheng-2011/software-build/releases/download/bit7z-v${BIT7Z_VER}/bit7z-${BIT7Z_VER}-linux-gcc.tar.gz
+          tar -xvf bit7z-${BIT7Z_VER}-linux-gcc.tar.gz
+        
+      - name: CI build wheels
+        uses: pypa/cibuildwheel@v4.1.0
+        env:
+          CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-* cp314-* cp313t-* cp314t-* pp39-* pp310-* pp311-*"
+          CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
+          CIBW_ARCHS: x86_64
+          CIBW_ENVIRONMENT: "LD_LIBRARY_PATH=/project/include/dist"
+          # Build cross-platform system API library pyos
+          CIBW_BEFORE_ALL: >
+            cd include && 
+            cmake -S . -B ./build -DCMAKE_BUILD_TYPE=Release && 
+            cmake --build ./build -j 1 --config Release
+            cd ..
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: wheels-${{ runner.os }}-${{ runner.arch }}
+          path: ./wheelhouse/*.whl

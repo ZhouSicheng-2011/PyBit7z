@@ -33,6 +33,7 @@ if platform.system() == "Windows":
             "pyos", # Python style system API library
             "OleAut32" # dependency of bit7z on Windows                              
             ]
+    deps = ["7zip/7z.dll"]
 elif platform.system() == "Linux":
     bit7z_type = "linux-gcc"
     bit7z_lib_dir = f"bit7z-{bit7z_type}/lib/x64"
@@ -44,6 +45,7 @@ elif platform.system() == "Linux":
         "pyos", # Python style system API library
         "dl" # dependency of bit7z on Linux
     ]
+    deps = ["7zip/7z.so"]
 
 ext_modules = [
     Pybind11Extension(
@@ -75,9 +77,10 @@ setup(
     long_description=README,
     long_description_content_type="text/markdown",
     ext_modules=ext_modules,
-    # Currently, build_ext only provides an optional "highest supported C++
-    # level" feature, but in the future it may provide more features.
     cmdclass={"build_ext": build_ext},
     zip_safe=False,
     python_requires=">=3.9",
+    package_data={
+        "bit7z_python": deps
+    }
 )
